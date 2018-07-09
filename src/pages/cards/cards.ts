@@ -20,8 +20,11 @@ export class CardsPage {
 
   apiData = [];
   courseInfo = [];
-  courseName: string;
-  courseTee: string;
+  courseName = 'Thanksgiving Point';
+  teeIndex = 2;
+  totalPar = 0;
+  totalHcp = 0;
+  totalYards = 0;
 
   constructor(public http: HttpClient,
               private AngularDb: AngularFireDatabase,
@@ -33,15 +36,23 @@ export class CardsPage {
   }
 
 
-
   ionViewDidEnter() {
-    this.courseName = this.courseProvider.courseTitle;
-    this.courseTee = this.courseProvider.tee;
+
+    //TODO uncomment these and change the variables at the top so they aren't hardcoded.
+    //this.courseName = this.courseProvider.courseTitle;
+    //this.teeIndex = this.courseProvider.tee;
     for(let i = 0; i < this.apiData.length; i++){
       if(this.apiData[i].name === this.courseName){
         this.courseInfo = this.apiData[i];
+        for(let j = 0; j < this.apiData[i].holes.length; j++){
+          this.totalPar += this.apiData[i].holes[j].teeBoxes[this.teeIndex].par;
+          this.totalHcp += this.apiData[i].holes[j].teeBoxes[this.teeIndex].hcp;
+          this.totalYards += this.apiData[i].holes[j].teeBoxes[this.teeIndex].yards;
+        }
       }
     }
+    console.log(this.courseInfo);
+
   }
 
 }

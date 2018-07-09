@@ -21,6 +21,7 @@ export class SelectPage {
   apiData = [];
   selCourse: string;
   teeArr = [];
+  teeIndex: number;
   selTee: string;
 
   constructor(public navCtrl: NavController,
@@ -53,8 +54,14 @@ export class SelectPage {
 
   getTeeInfo(tee){
     this.selTee = tee.value;
-    this.courseProvider.tee = this.selTee;
+    for(let i = 0; i < this.teeArr.length; i++){
+      if(this.teeArr[i] === this.selTee){
+        this.courseProvider.tee = i;
+      }
+    }
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectPage');

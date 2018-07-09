@@ -10,6 +10,6 @@ import { Injectable } from '@angular/core';
 export class CourseInfoProvider {
 
   courseTitle: string;
-  tee: string;
+  tee: number;
 
 }

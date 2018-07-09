@@ -22,40 +22,19 @@
         <p>Handicap:</p>
         <p>Yards:</p>
       </ion-col>
+      <ion-col *ngFor="let hole of courseInfo.holes">
+        <p>{{hole.hole}}</p>
+        <p>{{hole.teeBoxes[teeIndex].par}}</p>
+        <p>{{hole.teeBoxes[teeIndex].hcp}}</p>
+        <p>{{hole.teeBoxes[teeIndex].yards}}</p>
+      </ion-col>
       <ion-col>
-        2 of 2
+        <p>Totals</p>
+        <p>{{totalPar}}</p>
+        <p>{{totalHcp}}</p>
+        <p>{{totalYards}}</p>
       </ion-col>
     </ion-row>
 
-    <ion-row></ion-row>
-    <ion-row></ion-row>
-    <ion-row></ion-row>
-    <ion-row></ion-row>
-    <ion-row></ion-row>
-
   </ion-grid>
 </ion-content>
-  <!--<div  class="card">-->
-    <!--<div class="left">-->
-      <!--<div class="pheader">-->
-        <!--<div class="title">Holes</div>-->
-        <!--<div class="title">Handicaps</div>-->
-        <!--<div class="title">Yards</div>-->
-        <!--<div class="title">Par</div>-->
-      <!--</div>-->
-
-      <!--<div class="names"></div>-->
-    <!--</div>-->
-
-    <!--<div class="right">-->
-      <!--<div class='column' id='c" + i + "'>-->
-        <!--<div class='holecol cheader'></div>-->
-        <!--<div class='holecol hcp'></div>-->
-        <!--<div class='holecol yards'></div>-->
-        <!--<div class='holecol pars'></div>-->
-        <!--<div class='scoreboxes'></div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-
-
