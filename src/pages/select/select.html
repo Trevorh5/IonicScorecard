@@ -28,4 +28,8 @@
     </ion-select>
   </ion-item>
 
+  <ion-item>
+    <ion-label floating>Add Players</ion-label>
+    <ion-input #player (keyup.enter)='addPlayer(player)'></ion-input>
+  </ion-item>
 </ion-content>

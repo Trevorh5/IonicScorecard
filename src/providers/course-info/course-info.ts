@@ -11,5 +11,6 @@ export class CourseInfoProvider {
 
   courseTitle: string;
   tee: number;
+  players: string[];
 
 }

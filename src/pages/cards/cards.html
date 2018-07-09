@@ -15,6 +15,7 @@
 
 <ion-content padding>
   <ion-grid>
+
     <ion-row class="header">
       <ion-col>
         <p>Hole:</p>
@@ -33,6 +34,12 @@
         <p>{{totalPar}}</p>
         <p>{{totalHcp}}</p>
         <p>{{totalYards}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let player of players">
+      <ion-col>
+        <p>{{player}}</p>
       </ion-col>
     </ion-row>
 

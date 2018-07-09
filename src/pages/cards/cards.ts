@@ -20,11 +20,12 @@ export class CardsPage {
 
   apiData = [];
   courseInfo = [];
+  players: string[];
   courseName = 'Thanksgiving Point';
   teeIndex = 2;
-  totalPar = 0;
-  totalHcp = 0;
-  totalYards = 0;
+  totalPar;
+  totalHcp;
+  totalYards;
 
   constructor(public http: HttpClient,
               private AngularDb: AngularFireDatabase,
@@ -41,6 +42,10 @@ export class CardsPage {
     //TODO uncomment these and change the variables at the top so they aren't hardcoded.
     //this.courseName = this.courseProvider.courseTitle;
     //this.teeIndex = this.courseProvider.tee;
+    this.totalPar = 0;
+    this.totalHcp = 0;
+    this.totalYards = 0;
+    this.players = this.courseProvider.players;
     for(let i = 0; i < this.apiData.length; i++){
       if(this.apiData[i].name === this.courseName){
         this.courseInfo = this.apiData[i];

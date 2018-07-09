@@ -23,7 +23,7 @@ export class SelectPage {
   teeArr = [];
   teeIndex: number;
   selTee: string;
-
+  players = [];
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private AngularDb: AngularFireDatabase,
@@ -61,7 +61,11 @@ export class SelectPage {
     }
   }
 
-
+  addPlayer(name){
+    this.players.push(name.value);
+    this.courseProvider.players = this.players;
+    console.log(this.players);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectPage');
