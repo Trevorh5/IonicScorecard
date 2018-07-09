@@ -37,9 +37,15 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngFor="let player of players">
+    <ion-row *ngFor="let player of players" class="playerRow">
       <ion-col>
         <p>{{player}}</p>
+      </ion-col>
+      <ion-col *ngFor="let input of courseInfo.holes">
+        <ion-input type="number" placeholder="#"></ion-input>
+      </ion-col>
+      <ion-col>
+        <p>In: <br> Out: <br> Total: <br> </p>
       </ion-col>
     </ion-row>
 

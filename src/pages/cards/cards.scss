@@ -1,11 +1,16 @@
 ion-col{
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30px;
 }
 ion-row{
   border: 1px solid black;
 }
 
-
+.playerRow{
+}
 
 
 
