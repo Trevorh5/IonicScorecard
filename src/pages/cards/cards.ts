@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {CourseInfoProvider} from "../../providers/course-info/course-info";
+import {AngularFireDatabase} from "angularfire2/database";
 
 /**
  * Generated class for the CardsPage page.
@@ -16,17 +18,30 @@ import {HttpClientModule} from "@angular/common/http";
 })
 export class CardsPage {
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public http: HttpClientModule
-  ) {
+  apiData = [];
+  courseInfo = [];
+  courseName: string;
+  courseTee: string;
 
+  constructor(public http: HttpClient,
+              private AngularDb: AngularFireDatabase,
+              public courseProvider: CourseInfoProvider
+  ) {
+    AngularDb.list('courses').valueChanges().subscribe(data => {
+      this.apiData = data;
+    })
   }
 
 
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CardsPage');
+  ionViewDidEnter() {
+    this.courseName = this.courseProvider.courseTitle;
+    this.courseTee = this.courseProvider.tee;
+    for(let i = 0; i < this.apiData.length; i++){
+      if(this.apiData[i].name === this.courseName){
+        this.courseInfo = this.apiData[i];
+      }
+    }
   }
 
 }

@@ -16,6 +16,7 @@ import { GolfApiService } from '../providers/golf-api/golf-api.service';
 import {HttpClientModule} from "@angular/common/http";
 import {HttpModule} from "@angular/http";
 import {AngularFireAuthModule} from "angularfire2/auth";
+import { CourseInfoProvider } from '../providers/course-info/course-info';
 
 var environment = {
   apiKey: "AIzaSyCCbDqU014_HhgWKViIME_lz6NVY8nSppg",
@@ -53,7 +54,8 @@ var environment = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GolfApiService
+    GolfApiService,
+    CourseInfoProvider
   ]
 })
 export class AppModule {}

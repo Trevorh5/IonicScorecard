@@ -23,8 +23,8 @@
 
   <ion-item>
     <ion-label>Select Difficulty</ion-label>
-    <ion-select>
-      <ion-option *ngFor="let tee of selTees">{{tee}}</ion-option>
+    <ion-select #selTee (ionChange)="getTeeInfo(selTee)">
+      <ion-option *ngFor="let tee of teeArr">{{tee}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-content>

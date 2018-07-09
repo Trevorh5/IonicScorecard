@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AngularFireDatabase} from "angularfire2/database";
-import {GolfApiService} from "../../providers/golf-api/golf-api.service";
+import {CourseInfoProvider} from "../../providers/course-info/course-info";
 
 /**
  * Generated class for the SelectPage page.
@@ -20,12 +20,13 @@ export class SelectPage {
   courseNames = [];
   apiData = [];
   selCourse: string;
-  selTees = [];
+  teeArr = [];
+  selTee: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public AngularDb: AngularFireDatabase,
-              public provider: GolfApiService)
+              private AngularDb: AngularFireDatabase,
+              public courseProvider: CourseInfoProvider)
   {
     AngularDb.list('courses').valueChanges().subscribe(data =>{
       this.apiData = data;
@@ -37,17 +38,22 @@ export class SelectPage {
   }
 
   getTees(course){
-    console.log('im working');
     this.selCourse = course.value;
-
+    this.courseProvider.courseTitle = this.selCourse;
+    console.log(this.selCourse);
     for(let i = 0; i < this.courseNames.length; i++){
       if(this.courseNames[i] === this.selCourse){
-        this.selTees = []
+        this.teeArr = [];
         for(let y = 0; y < this.apiData[i].holes[0].teeBoxes.length; y++){
-          this.selTees.push(this.apiData[i].holes[0].teeBoxes[y].teeType)
+          this.teeArr.push(this.apiData[i].holes[0].teeBoxes[y].teeType)
         }
       }
     }
+  }
+
+  getTeeInfo(tee){
+    this.selTee = tee.value;
+    this.courseProvider.tee = this.selTee;
   }
 
   ionViewDidLoad() {
