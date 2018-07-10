@@ -62,7 +62,7 @@ export class SelectPage {
   }
 
   addPlayer(name){
-    this.players.push(name.value);
+    this.players.push({name: name.value, inScore: 0, outScore: 0, totScore: 0, scoreArr: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]});
     this.courseProvider.players = this.players;
     console.log(this.players);
   }

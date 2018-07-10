@@ -17,7 +17,7 @@
   <ion-grid>
 
     <ion-row class="header">
-      <ion-col>
+      <ion-col class="info">
         <p>Hole:</p>
         <p>Par:</p>
         <p>Handicap:</p>
@@ -38,16 +38,15 @@
     </ion-row>
 
     <ion-row *ngFor="let player of players" class="playerRow">
-      <ion-col>
-        <p>{{player}}</p>
+      <ion-col class="playerName">
+        <p>{{player.name}}</p>
       </ion-col>
-      <ion-col *ngFor="let input of courseInfo.holes">
-        <ion-input type="number" placeholder="#"></ion-input>
+      <ion-col *ngFor="let input of courseInfo.holes; let i = index">
+        <ion-input #hole type="number" placeholder="#" (ionChange)="getScore(hole, i, player)"> </ion-input>
       </ion-col>
       <ion-col>
-        <p>In: <br> Out: <br> Total: <br> </p>
+        <p>In: {{player.inScore}} <br> Out: {{player.outScore}} <br> Tot: {{player.totScore}}</p>
       </ion-col>
     </ion-row>
-
   </ion-grid>
 </ion-content>

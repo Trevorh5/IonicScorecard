@@ -20,8 +20,9 @@ export class CardsPage {
 
   apiData = [];
   courseInfo = [];
-  players: string[];
+  players = [];
   courseName = 'Thanksgiving Point';
+  //scoreArr = [];
   teeIndex = 2;
   totalPar;
   totalHcp;
@@ -42,10 +43,11 @@ export class CardsPage {
     //TODO uncomment these and change the variables at the top so they aren't hardcoded.
     //this.courseName = this.courseProvider.courseTitle;
     //this.teeIndex = this.courseProvider.tee;
+    this.players = this.courseProvider.players;
+
     this.totalPar = 0;
     this.totalHcp = 0;
     this.totalYards = 0;
-    this.players = this.courseProvider.players;
     for(let i = 0; i < this.apiData.length; i++){
       if(this.apiData[i].name === this.courseName){
         this.courseInfo = this.apiData[i];
@@ -57,6 +59,29 @@ export class CardsPage {
       }
     }
     console.log(this.courseInfo);
+  }
+
+  getScore(score, index, player){
+    //console.log(score.value, index, player);
+
+    player.inScore = 0;
+    player.outScore = 0;
+    player.totScore = 0;
+    player.scoreArr[index] = score.value;
+    console.log(index, player.scoreArr, player.inScore);
+
+    for(let i = 0; i < player.scoreArr.length; i++){
+      if(i < 9) {
+        player.inScore += (Number(player.scoreArr[i]) - this.courseInfo.holes[i].teeBoxes[this.teeIndex].par);
+      }
+      else if(i >= 9){
+        player.outScore += (Number(player.scoreArr[i]) - this.courseInfo.holes[i].teeBoxes[this.teeIndex].par)
+      }
+      player.totScore += (Number(player.scoreArr[i]) - this.courseInfo.holes[i].teeBoxes[this.teeIndex].par);
+    }
+
+    console.log('after for loop' + player.inScore)
+
 
   }
 

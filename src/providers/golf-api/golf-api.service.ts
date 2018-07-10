@@ -14,7 +14,7 @@ export class GolfApiService {
   constructor(public http: HttpClient) {
     console.log('Hello GolfApiProvider Provider');
   }
-
+  //TODO look at fredos and see if he even uses this service at all.
   private apiUrl: "https://golf-scorecard-9cc53.firebaseio.com/";
 
   getCourses(): Observable<any>{
